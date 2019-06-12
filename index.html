@@ -5,6 +5,32 @@
 </head>
 <body>
 
+	<style>
+		body{
+			color: white;
+			background-image: url('https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500');
+			text-align: center;
+		}
+		div{
+			color:white;
+		}
+	</style>
+	
+
+	<h2>Consumo de API con JS</h2>
+	<h4>SWAPI - The Star Wars API</h4>
+	<h1>Datos del personaje</h1>	
+	<br>
+	<div id="name"></div>
+	<div id="height"></div>
+	<div id="mass"></div>
+	<div id="hair_color"></div>
+	<div id="birth_year"></div>
+	<div id="gender"></div>
+	
+	<h5 id="fuente_de_informacion"></h5>
+
+
 	<script type="text/javascript">
 		
 		let url = "https://swapi.co/api/people/1"
@@ -15,9 +41,15 @@
 		req.send(null)
 		if(req.status == 200){
 			let data =JSON.parse(req.responseText)
-			console.log(data.name) //imprimiendo los datos en consola
-
-			document
+			console.log(data) //imprimiendo los datos en consola
+			
+			document.getElementById('fuente_de_informacion').innerHTML = '<a href="'+data.url+'">'+ data.url +'</a>' 
+			document.getElementById('name').innerHTML = 'Nombre: ' + data.name
+			document.getElementById('height').innerHTML = 'Altura: ' + data.height
+			document.getElementById('mass').innerHTML = 'Peso: ' + data.mass
+			document.getElementById('hair_color').innerHTML = 'Color de cabello: ' + data.hair_color
+			document.getElementById('birth_year').innerHTML = 'Año de cumpleaños: ' + data.birth_year
+			document.getElementById('gender').innerHTML = 'Genero: ' + data.gender
 			
 			//esta parte la podemos utilizar cuando tengamos la necesidad de recorer varias respuestas devueltas por parte del servicio
 			/*
@@ -29,10 +61,6 @@
 			}*/
 		}		
 	</script>
-
-	<h2>Consumo de API con JS</h2>
-	<h4>SWAPI - The Star Wars API</h4>
-
 	
 </body>
 </html>
