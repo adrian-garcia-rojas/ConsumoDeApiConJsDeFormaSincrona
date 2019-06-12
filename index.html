@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consumo de API con JS</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		let url = "https://swapi.co/api/people/1"
+
+		var req = new XMLHttpRequest()
+		//var req = new window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		req.open('GET', url, false)
+		req.send(null)
+		if(req.status == 200){
+			let data =JSON.parse(req.responseText)
+			console.log(data.name) //imprimiendo los datos en consola
+
+			document
+			
+			//esta parte la podemos utilizar cuando tengamos la necesidad de recorer varias respuestas devueltas por parte del servicio
+			/*
+			let dataLength = JSON.parse(req.responseText).length
+			let data = JSON.parse(req.responseText)
+			for (var i = 0; i < 1; i++)
+			{
+				console.log('Name: ' + data[i].name + ' Height: ' + data[i].height)
+			}*/
+		}		
+	</script>
+
+	<h2>Consumo de API con JS</h2>
+	<h4>SWAPI - The Star Wars API</h4>
+
+	
+</body>
+</html>
